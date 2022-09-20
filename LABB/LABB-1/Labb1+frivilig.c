@@ -37,19 +37,19 @@ int main(void)
     }
     }
 
-    
+    if (Fuel > 0)
+    {
+        printf("Oh no you ran out of fuel....");
+    }
+
     if (Velocity < -2)
     {
         printf("MISSION FAILED! Crash landing at %.1f m/s", Velocity);
-    }
-    else if (Fuel >0)
-    {
-        printf("Oh no you ran out of fuel");
-        
     }
     else
     {
         printf("SUCCESS! You have landed with a speed of %.1f m/s and you still have %dkg fuel remaining.", Velocity, Fuel);
     }
+    
     return 0;
 }
