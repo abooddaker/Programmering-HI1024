@@ -9,6 +9,7 @@ int resetNumber(int measurementArray[], int nrOfMeasurements);
 int computeHighest(int measurementArray[], int nrOfMeasurements);
 int computeLowest(int measurementArray[], int nrOfMeasurements);
 float computeAverage(int measurementArray[], int nrOfMeasurements);
+int computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[]);
 
 
 
@@ -36,18 +37,8 @@ int main()
                 nrOfMeasurements = enterNumber(measurementArray, nrOfMeasurements);
                 break;
             case 'c':
-                if (nrOfMeasurements == 0)
-                {
-                    printf("No measurements entered\n");
-                } else 
-                {
-                highestNumber = computeHighest(measurementArray, nrOfMeasurements);
-                printf("Highest number: %d\n", highestNumber);
-                lowestNumber = computeLowest(measurementArray, nrOfMeasurements);
-                printf("Lowest number: %d\n", lowestNumber);
-                averageNumber = computeAverage(measurementArray, nrOfMeasurements);
-                printf("Average number: %.2f\n", averageNumber);
-                } 
+                computeNumber(measurementArray, nrOfMeasurements);
+
                 break;
             case 'r':
                 nrOfMeasurements = resetNumber(measurementArray, nrOfMeasurements);
@@ -89,10 +80,9 @@ void viewNumber(int measurementArray[], int nrOfMeasurements)
     printf("[ ");
     for(int i = 0; i < nrOfMeasurements; i++)
     {
-        printf("%d ", measurementArray[i]);
+        printf("%.f ", round(measurementArray[i]));
     }
     printf("]\n");
-    printf("nrOfMeasurements: %d\n", nrOfMeasurements);
 }
 
 int resetNumber(int measurementArray[], int nrOfMeasurements)
@@ -103,16 +93,35 @@ int resetNumber(int measurementArray[], int nrOfMeasurements)
     }
     return 0;
 }
-/*int computeNumber(int measurementArray[], int nrOfMeasurements)
+
+int computeNumber(int measurementArray[], int nrOfMeasurements)
 {
-    
+    int highestNumber, lowestNumber, avgArray[nrOfMeasurements];
+    float averageNumber;
+
+    if (nrOfMeasurements == 0)
+    {
+        printf("No measurements entered\n");
+    } else 
+    {
+        highestNumber = computeHighest(measurementArray, nrOfMeasurements);
+        printf("Highest number: %d\n", highestNumber);
+        lowestNumber = computeLowest(measurementArray, nrOfMeasurements);
+        printf("Lowest number: %d\n", lowestNumber);
+        averageNumber = computeAverage(measurementArray, nrOfMeasurements);
+        printf("Average number: %.2f\n", averageNumber);
+        computeNormal(measurementArray, nrOfMeasurements, averageNumber, avgArray);
+        viewNumber(avgArray, nrOfMeasurements);
+
+    } 
 }
-*/
+
 int computeHighest(int measurementArray[], int nrOfMeasurements)
 {
     int highestNumber;
-    highestNumber = measurementArray[0];
-    for(int i = 1; i < nrOfMeasurements; i++)
+    highestNumber = 0;
+
+    for(int i = 0; i < nrOfMeasurements; i++)
     {
         if (highestNumber < measurementArray[i])
         {
@@ -148,28 +157,13 @@ float computeAverage(int measurementArray[], int nrOfMeasurements)
     return averageNumber;
 }
 
-
-/* int computeHighest(int measurementArray[], int nrOfMeasurements)
+int computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[])
 {
-    int arraySort, highestNumber;
-    for(int i = 0; i < nrOfMeasurements-1; i++)
+    for(int i = 0; i < nrOfMeasurements; i++)
     {
-        for(int j = 0; j < nrOfMeasurements-1-i; j++)
-        {
-            if(measurementArray[j] > measurementArray[j+1])
-            {
-                arraySort = measurementArray[j];
-                measurementArray[j] = measurementArray[j+1];
-                measurementArray[j+1] = arraySort;            
-            }
-        }
-    }
-    nrOfMeasurements - 1;
-    measurementArray[nrOfMeasurements] == highestNumber;
-    printf("Highest nubmer: %d", highestNumber);
-    return highestNumber;
+        avgArray[i] = measurementArray[i] - round(averageNumber);
+    }   
 }
-*/
 
 
 
