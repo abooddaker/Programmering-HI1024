@@ -9,7 +9,7 @@ int resetNumber(int measurementArray[], int nrOfMeasurements);
 int computeHighest(int measurementArray[], int nrOfMeasurements);
 int computeLowest(int measurementArray[], int nrOfMeasurements);
 float computeAverage(int measurementArray[], int nrOfMeasurements);
-int computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[]);
+void computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[]);
 
 
 int main()
@@ -36,7 +36,6 @@ int main()
                 break;
             case 'c':
                 computeNumber(measurementArray, nrOfMeasurements);
-
                 break;
             case 'r':
                 nrOfMeasurements = resetNumber(measurementArray, nrOfMeasurements);
@@ -44,7 +43,7 @@ int main()
             case 'q':
                 printf("Exit measurement tool\n");
                 break;
-            default: 
+            default:
                 printf("Please enter only valid characters (VECRQ): \n");
         }
     } while(menuChoice != 'q');
@@ -105,10 +104,13 @@ int computeNumber(int measurementArray[], int nrOfMeasurements)
     {
         highestNumber = computeHighest(measurementArray, nrOfMeasurements);
         printf("Max value: %d\n", highestNumber);
+        
         lowestNumber = computeLowest(measurementArray, nrOfMeasurements);
         printf("Min value: %d\n", lowestNumber);
+        
         averageNumber = computeAverage(measurementArray, nrOfMeasurements);
         printf("Avr value: %.2f\n", averageNumber);
+        
         computeNormal(measurementArray, nrOfMeasurements, averageNumber, avgArray);
         viewNumber(avgArray, nrOfMeasurements);
     } 
@@ -155,7 +157,7 @@ float computeAverage(int measurementArray[], int nrOfMeasurements)
     return averageNumber;
 }
 
-int computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[])
+void computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[])
 {
     for(int i = 0; i < nrOfMeasurements; i++)
     {
