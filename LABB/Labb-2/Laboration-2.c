@@ -12,7 +12,6 @@ float computeAverage(int measurementArray[], int nrOfMeasurements);
 int computeNormal(int measurementArray[], int nrOfMeasurements, float averageNumber, int avgArray[]);
 
 
-
 int main()
 {
     char menuChoice;
@@ -24,7 +23,6 @@ int main()
 
     do 
     {
-        // 4 functions - one for each button (VECRQ)
         printf("VECRQ? ");
         scanf(" %c", &menuChoice);
 
@@ -80,7 +78,7 @@ void viewNumber(int measurementArray[], int nrOfMeasurements)
     printf("[ ");
     for(int i = 0; i < nrOfMeasurements; i++)
     {
-        printf("%.f ", round(measurementArray[i]));
+        printf("%d ", measurementArray[i]);
     }
     printf("]\n");
 }
@@ -102,17 +100,17 @@ int computeNumber(int measurementArray[], int nrOfMeasurements)
     if (nrOfMeasurements == 0)
     {
         printf("No measurements entered\n");
-    } else 
+    } 
+    else
     {
         highestNumber = computeHighest(measurementArray, nrOfMeasurements);
-        printf("Highest number: %d\n", highestNumber);
+        printf("Max value: %d\n", highestNumber);
         lowestNumber = computeLowest(measurementArray, nrOfMeasurements);
-        printf("Lowest number: %d\n", lowestNumber);
+        printf("Min value: %d\n", lowestNumber);
         averageNumber = computeAverage(measurementArray, nrOfMeasurements);
-        printf("Average number: %.2f\n", averageNumber);
+        printf("Avr value: %.2f\n", averageNumber);
         computeNormal(measurementArray, nrOfMeasurements, averageNumber, avgArray);
         viewNumber(avgArray, nrOfMeasurements);
-
     } 
 }
 
