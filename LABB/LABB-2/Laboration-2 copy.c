@@ -5,7 +5,7 @@
 int enterNumber(int measurementArray[], int nrOfMeasurements);
 void viewNumber(int measurementArray[], int nrOfMeasurements);
 int computeNumber(int measurementArray[], int nrOfMeasurements);
-/*int resetNumber(int measurementArray[], int nrOfMeasurements); */
+int resetNumber(int measurementArray[], int nrOfMeasurements);
 int computeHighest(int measurementArray[], int nrOfMeasurements);
 int computeLowest(int measurementArray[], int nrOfMeasurements);
 float computeAverage(int measurementArray[], int nrOfMeasurements);
@@ -38,7 +38,7 @@ int main()
                 computeNumber(measurementArray, nrOfMeasurements);
                 break;
             case 'r':
-                nrOfMeasurements = 0; /*resetNumber(measurementArray, nrOfMeasurements); */
+                nrOfMeasurements = resetNumber(measurementArray, nrOfMeasurements);
                 break;
             case 'q':
                 printf("Exit measurement tool\n");
@@ -74,15 +74,22 @@ int enterNumber(int measurementArray[],int nrOfMeasurements)
 
 void viewNumber(int measurementArray[], int nrOfMeasurements)
 {
-    printf("[ ");
-    for(int i = 0; i < nrOfMeasurements; i++)
+    if (nrOfMeasurements == 0)
     {
-        printf("%d ", measurementArray[i]);
+        printf("No measurements entered\n");
     }
-    printf("]\n");
+    else 
+    {
+        printf("[ ");
+        for(int i = 0; i < nrOfMeasurements; i++)
+        {
+            printf("%d ", measurementArray[i]);
+        }
+        printf("]\n");
+    }
 }
 
-/*int resetNumber(int measurementArray[], int nrOfMeasurements)
+int resetNumber(int measurementArray[], int nrOfMeasurements)
 {
     for(int i = 0; i < nrOfMeasurements; i++)
     {
@@ -90,7 +97,6 @@ void viewNumber(int measurementArray[], int nrOfMeasurements)
     }
     return 0;
 }
-*/
 
 int computeNumber(int measurementArray[], int nrOfMeasurements)
 {
