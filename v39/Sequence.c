@@ -13,7 +13,7 @@ int main()
     srand(time(0));
     size = getSize();
     int arr[size];
-    fillZeros(size, arr);
+    //fillZeros(size, arr);
     getRandomNum(size, arr);
     view(size, arr);
 }
@@ -44,33 +44,34 @@ void view(int size, int arr[])
 
 void getRandomNum(int size, int arr[])
 {
-    int isNumberSeen;
+    int numberSeen;
     int randomNum;
 
     for (int i = 0; i < size; i++)
     {
-        isNumberSeen = 0;
+        numberSeen = 0;
         randomNum = rand() % size + 1;
 
         for (int j = 0; j < size; j++) 
         {
             if (arr[j] == randomNum) 
             {
-                isNumberSeen = 1;
+                numberSeen = 1;
                 i--;
             }
         }
-        if(!isNumberSeen)
+        if(!numberSeen)
         {
             arr[i] = randomNum;
         }
     }
 }
 
-void fillZeros(int size, int arr[])
+/*void fillZeros(int size, int arr[])
 {
     for (int i = 0; i < size; i++)
     {
         arr[i] = 0;
     }
 }
+*/
