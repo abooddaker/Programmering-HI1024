@@ -4,7 +4,6 @@
 
 int getSize();
 void view(int size, int arr[]);
-void fillZeros(int size, int arr[]);
 void getRandomNum(int size, int arr[]);
 
 int main()
@@ -13,7 +12,6 @@ int main()
     srand(time(0));
     size = getSize();
     int arr[size];
-    //fillZeros(size, arr);
     getRandomNum(size, arr);
     view(size, arr);
 }
@@ -24,7 +22,7 @@ int getSize()
     while (size > 10000 || size < 1)
     {
         printf("Vilket ar det hogsta heltal du vill ha med (1-10000): ");
-        scanf("%i", &size);
+        scanf("%d", &size);
 
         if (size > 10000 || size < 1)
         {
@@ -38,7 +36,7 @@ void view(int size, int arr[])
 {
     for (int i = 0; i < size; i++)
     {
-        printf("%i, ", arr[i]);
+        printf("%d, ", arr[i]);
     }
 }
 
