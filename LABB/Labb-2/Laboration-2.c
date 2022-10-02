@@ -17,7 +17,7 @@ int main()
     char menuChoice;
     int measurementArray[SIZE]; 
     int nrOfMeasurements = 0;
-    int highestNumber, lowestNumber, normalisedNumber;
+    int highestNumber, lowestNumber;
     float averageNumber, sum;
     printf("Measurement tool 2.0\n");
 
@@ -163,6 +163,7 @@ void computeNormal(int measurementArray[], int nrOfMeasurements, float averageNu
     for(int i = 0; i < nrOfMeasurements; i++)
     {
         avgArray[i] = measurementArray[i] - round(averageNumber);
+        printf("%d,%d" arrayNumber[i], noArry[i]);
     }   
 }
 
