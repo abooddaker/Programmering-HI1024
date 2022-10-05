@@ -5,7 +5,7 @@ int a = 5;
 int main()
 {
 
-printf("%d", a);
+printf("\132est %d", a);
 
 
 }
