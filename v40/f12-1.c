@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
-
-struct bank;
+struct bank
 {
     char name[30];
     int money;
 } user1, user2;
 
 char createAccount(char name[30],int money);
-char printAccount(char name[30],int money,int temp , int total);
-int transfer(int money);
+char printAccount(char name[30],int money, int temp , int total);
+void transfer(int *p, int *q);
+
 int main()
 {
-    struct bank;;
+    struct bank;
     char name[30];
     int money;
     int temp;
@@ -30,25 +30,20 @@ char createAccount(char name[30],int money){
 
     strcpy(user2.name,"Mark Asplund");
     user2.money = 210;
-
 }
 
 char printAccount(char name[30],int money, int temp , int total)
 {
     printf("%s - %d kr\n", user1.name, user1.money);
     printf("%s - %d kr\n", user2.name, user2.money);
-    transfer(money);
+    transfer(&user2.money, &user1.money);
     printf("%s - %d kr\n",user1.name, user2.money);
     printf("%s - %d kr\n",user2.name, user1.money);
 }
 
-int transfer(int money)
+void transfer(int *x, int *y)
 {
-int temp;
-int total;
-
-total = user1.money + user2.money;
-user1.money = total;
-temp = user2.money - user2.money;
-user2.money = temp;
+    int tmp = *x;
+    *x = 0;
+    *y = *y + tmp;
 }

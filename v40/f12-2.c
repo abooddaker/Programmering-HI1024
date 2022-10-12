@@ -14,7 +14,7 @@ typedef struct car Car;
 
 void printCar(Car c)
 {
-    printf("Bil: %s, Årsmodell: %d, mil: %d\n",c.model,c.year,c.milage);
+    printf("Bil: %s, Arsmodell: %d, mil: %d\n",c.model,c.year,c.milage);
 }
 
 Car createCar(char model[],int year, int milage)
@@ -50,13 +50,13 @@ void printRegister(Car reg[], int nrOfCars)
     
     for(int i = 0; i < nrOfCars; i++)
     {
-        printf("%d. Bil: %s Arsmodell: %d Mil: %d\n", i + 1, reg[i].model, reg[i].year, reg[i].milage);
+        printf("%d. ", i + 1);
+        printCar(reg[i]);
     }
 }
 
 int main()
 {
-
     Car carRegister[MAX];
     int nrOfCars=0;
     regCars(carRegister,&nrOfCars);
