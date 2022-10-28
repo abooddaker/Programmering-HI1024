@@ -18,6 +18,11 @@ typedef struct car Car;
     printf("Bil: %s, Arsmodell: %d, Mil: %d", c1.model, c1.year, c1.milage);
 } */
 
+void showCar(Car c){
+    printf("Bil: %s, Arsmodell: %d, Mil: %d", c.model, c.year, c.milage);
+    printf("\n");
+}
+
 int main()
 {
     Car c1 = {"Volvo", 2013, 2100}, c2 = {"Saab", 1992, 23000}, c3;
@@ -25,12 +30,7 @@ int main()
     c3.milage = c3.milage + 1000;
     showCar(c1);
     showCar(c2);    
-    showCar(c3);    
+    showCar(c3);
 
     return 0;
-}
-
-void showCar(Car c){
-    printf("Bil: %s, Arsmodell: %d, Mil: %d", c.model, c.year, c.milage);
-    printf("\n");
 }

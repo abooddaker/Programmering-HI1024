@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int arrayFill ( int *array ,int size)
+int arrayFill ( int array[] ,int size)
 {
     int lowestNumber = -10, highestNumber = 10;
     srand(time(0));
@@ -13,7 +13,7 @@ int arrayFill ( int *array ,int size)
     }
 }
 
-int arrayShow (int *array ,int size)
+int arrayShow (int array[] ,int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -22,12 +22,12 @@ int arrayShow (int *array ,int size)
     printf("\n");
 }
 
-int arraySort (int *array ,int size)
+int arraySort (int array[] ,int size)
 {
     int j, arraySort;
-    for(int i = 0; i < size; i++)
+    for(int i = 0; i < size-1; i++)
     {
-        for(j = 0; j < size; j++)
+        for(j = 0; j < size-1-i; j++)
         {
             if(array[j] > array[j+1])
             {
@@ -47,10 +47,10 @@ int main(void)
     arrayFill(array, size);
     printf("Unsorted randomly generated numbers: ");
     arrayShow(array, size);
-
     arraySort(array, size);
     printf("Sorted randomly generated numbers:  ");
     arrayShow(array, size);
 
     return 0;
 }
+

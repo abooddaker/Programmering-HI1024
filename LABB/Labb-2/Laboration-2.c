@@ -86,7 +86,7 @@ void viewNumber(int measurementArray[], int nrOfMeasurements)
 {
     for(int i = 0; i < nrOfMeasurements; i++)
     {
-        measurementArray[i] = 0;
+        measurementArray[i] = 0;a
     }
     return 0;
 }
@@ -163,7 +163,6 @@ void computeNormal(int measurementArray[], int nrOfMeasurements, float averageNu
     for(int i = 0; i < nrOfMeasurements; i++)
     {
         avgArray[i] = measurementArray[i] - round(averageNumber);
-        printf("%d,%d" arrayNumber[i], noArry[i]);
     }   
 }
 

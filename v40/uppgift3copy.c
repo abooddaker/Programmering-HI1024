@@ -9,7 +9,7 @@ int main(void)
     char words[100];
     
     //printf("Enter a word: ");
-    scanf("%s %s %s", words, words, words);
+    gets(words);
     printf("Length of string: %d\n", stringCount(words));
 
     return 0;
@@ -18,7 +18,7 @@ int main(void)
 int stringCount(char string[])
 {
     int length = 0;
-    for (int i = 0; string[i] != '\0'; i++)
+    for (int i = 1; string[i] != '\0'; i++)
     {
         length++;
     }

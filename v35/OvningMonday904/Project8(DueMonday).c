@@ -7,12 +7,12 @@ int main(void)
     printf("Enter number of rows/colums: ");
     scanf("%d", &numberOfRows);
 
-    for (row = 1; row <= numberOfRows; row++) 
+    for (row = 1; row <= numberOfRows; row++)
     {
-        for (column = 1; column <= numberOfRows; column++)
+                for (column = 1; column <= numberOfRows; column++)
         {
             if ((row == column) || (row + column) == (numberOfRows + 1))
-                 
+
             {
                 printf(" * ");
             }
@@ -24,5 +24,4 @@ int main(void)
         printf("\n");
     }
     return 0;
-
 }

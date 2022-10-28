@@ -27,7 +27,6 @@ int randomPin(int randomCode[], int userCode[])
     }
     while(CorrectNumbers == 0)
     {
-        int nrOfCorrectGuesses = 0;
         attempts++;
         printf("\nGuess the code: \n");
         scanf("%d %d %d", &userCode[0], &userCode[1], &userCode[2]);
@@ -36,6 +35,7 @@ int randomPin(int randomCode[], int userCode[])
         {
             for(int j = 0; j < SOZE; j++)
             {
+                printf("Loop amount - ");
                 if(randomCode[i] == userCode[i])
                 {
                     nrOfCorrectGuesses++;
