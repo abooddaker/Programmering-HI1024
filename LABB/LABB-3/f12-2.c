@@ -60,7 +60,7 @@ int main()
     Car carRegister[MAX];
     int nrOfCars=0;
     regCars(carRegister,&nrOfCars);
-    printRegister(carRegister, nrOfCars);
+    //printRegister(carRegister, nrOfCars);
 
     return 0;
 }

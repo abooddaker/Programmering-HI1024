@@ -25,7 +25,7 @@ Box changeCharacter(Box b){
 
 void printBox(Box b){
     printf("(%.2f,%.2f,%.2f) - ",b.length,b.width,b.height);
-    if(b.fragile)
+    if(b.fragile == 1)
         printf("fragile\n");
     else
         printf("sturdy\n");

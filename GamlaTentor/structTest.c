@@ -18,7 +18,7 @@ Car createCar(char model[],int year, int milage)
     c.year=year;
     c.milage=milage;
     printf("C is : %d\n", c);
-    return c; //ntligen kan vi returnera flera v„rden!
+    return c; // ntligen kan vi returnera flera v„rden!
 }
 
 Car printCar(Car c)
