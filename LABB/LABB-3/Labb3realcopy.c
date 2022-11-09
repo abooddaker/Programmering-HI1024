@@ -30,13 +30,13 @@ int deleteProduct(Warehouse registry[], int nrOfProducts);
 
 int main()
 {
-    Warehouse itemList[MAX], registry[MAX];
+    Warehouse registry[MAX];
     char fileName[WORDLENGTH];
     int menuChoice, nrOfProducts = 0;
     
     printf("Skriv in fil namn som du vill oppna eller skapa: ");
     scanf("%s", fileName);
-    readFromFile(itemList, fileName, &nrOfProducts);
+    readFromFile(registry, fileName, &nrOfProducts);
     do
     {
         printf("\nValj en meny val (1-7):\n ");
@@ -46,26 +46,26 @@ int main()
         switch(menuChoice)
         {
             case 1:
-                registerProduct(itemList, &nrOfProducts);
+                registerProduct(registry, &nrOfProducts);
                 break;
             case 2:
-                printRegistery(itemList, nrOfProducts);
+                printRegistery(registry, nrOfProducts);
                 break;
             case 3:
-                searchMenu(itemList, nrOfProducts);
+                searchMenu(registry, nrOfProducts);
                 break;
             case 4:
-                editProductAmount(itemList, nrOfProducts);
+                editProductAmount(registry, nrOfProducts);
                 break;
             case 5:
-                sortMenu(itemList, nrOfProducts);
+                sortMenu(registry, nrOfProducts);
                 break;
             case 6:
-                nrOfProducts = deleteProduct(itemList, nrOfProducts);
+                nrOfProducts = deleteProduct(registry, nrOfProducts);
                 break;
             case 7:
                 printf("File saved\n");
-                readToFile(itemList, fileName, &nrOfProducts);
+                readToFile(registry, fileName, &nrOfProducts);
                 printf(">>Bye");
 
                 break;
@@ -113,7 +113,6 @@ void readToFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
         }
     }
     fclose(fp);
-    
 }
 
 
@@ -176,6 +175,8 @@ void registerProduct(Warehouse registry[], int *pNrOfProducts)
 
 void printProducts(Warehouse p)
 {
+    //printf("Varunummer  Namn                Lagersaldo\n");
+    //printf("------------------------------------------\n");
     printf("%03d\t    %-20s%d\n", p.productNumber, p.productName, p.productAmount);
 } 
 
@@ -239,10 +240,10 @@ void searchProductNumber(Warehouse registry[], int nrOfProducts)
         {
             if(userProductNumber == registry[i].productNumber)
             {
-                printf("\nVarunummer     Namn     Lagersaldo\n");
-                printf("----------------------------------\n");
-                printf("%03d\t\t%s\t\t%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
-                printf("\n");
+            printf("Varunummer  Namn                Lagersaldo\n");
+            printf("------------------------------------------\n");
+            printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
+            printf("\n");
             }
             else
             {
@@ -275,9 +276,10 @@ void searchProductAmount(Warehouse registry[], int nrOfProducts)
         {
             if(userProductAmount == registry[i].productAmount)
             {
-                printf("Varunummer\t\tNamn\t\tLagersaldo\n");
-                printf("----------------------------------\n");
-                printf("%03d\t\t\t%s\t\t%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
+            printf("Varunummer  Namn                Lagersaldo\n");
+            printf("------------------------------------------\n");
+            printProducts(registry[i]);
+            //printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
             }
             else
             {
@@ -301,15 +303,16 @@ void searchProductName(Warehouse registry[], int nrOfProducts)
         printf("Ange produkt namn (0 for avslut): ");
         scanf("%s%*c", userProductName);
 
-        printf("Varunummer\t\tNamn\t\tLagersaldo\n");
-        printf("----------------------------------------------------\n");
+        printf("Varunummer  Namn                Lagersaldo\n");
+        printf("------------------------------------------\n");
 
         for(int i = 0; i < nrOfProducts; i++)
         {
             nameSeen = strstr(registry[i].productName, userProductName);
             if(nameSeen != 0)
             {
-                printf("%03d\t\t\t%s\t\t%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
+            printProducts(registry[i]);
+            //printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
             }
         }
     }
@@ -330,7 +333,7 @@ void editProductAmount(Warehouse registry[], int nrOfProducts)
 
     do
     {   
-        printf("Ange varanummer som du vill andra saldot for: ");
+        printf("Ange varanummer som du vill andra saldot for (0 f”r avslut): ");
         scanf("%d", &userProductNumber);
         for(int i = 0; i < nrOfProducts; i++)
         {
@@ -341,7 +344,7 @@ void editProductAmount(Warehouse registry[], int nrOfProducts)
             }
             else if(userProductNumber == registry[i].productNumber)
             {
-                printf("Skriv in nya lagersaldot: ");
+                printf("Ange andring av lagersaldot: ");
                 scanf("%d", &userProductAmount);
                 registry[i].productAmount = registry[i].productAmount + userProductAmount;
                 if (registry[i].productAmount < 0)
@@ -350,7 +353,7 @@ void editProductAmount(Warehouse registry[], int nrOfProducts)
                     registry[i].productAmount = 0;
                 }
             }
-            if(productNotFound == nrOfProducts)
+            if((productNotFound == nrOfProducts) && (userProductNumber != 0))
             {
                 printf("Varan hittades inte, forsok igen.\n");
                 productNotFound = 0;
@@ -403,7 +406,6 @@ void sortProductNumber(Warehouse registry[], int nrOfProducts)
             }
         }   
     }
-    printf(">>Sorterade efter varunummer<<\n");
 }
 
 void sortProductAmount(Warehouse registry[], int nrOfProducts)
@@ -421,7 +423,6 @@ void sortProductAmount(Warehouse registry[], int nrOfProducts)
             }
         }   
     }
-    printf(">>Sorterade efter lagersaldo<<\n");
 }
 
 void sortProductName(Warehouse registry[], int nrOfProducts)
@@ -439,7 +440,6 @@ void sortProductName(Warehouse registry[], int nrOfProducts)
             }
         }   
     }
-    printf(">>Sorterade efter produkt namn<<\n");
 }
 
 int deleteProduct(Warehouse registry[], int nrOfProducts)
