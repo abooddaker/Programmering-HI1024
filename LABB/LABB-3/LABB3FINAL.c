@@ -34,13 +34,13 @@ int main()
     char fileName[WORDLENGTH];
     int menuChoice, nrOfProducts = 0;
     
-    printf("Skriv in namnet pa filen som du vill oppna/skapa: ");
+    printf("Skriv in fil namn som du vill oppna eller skapa: ");
     scanf("%s", fileName);
     readFromFile(registry, fileName, &nrOfProducts);
     do
     {
-        printf("\nValj ett menyval (1-7):\n ");
-        printf("\n 1. Registrera nya varor \n 2. Skriva ut alla varor \n 3. Soka efter varor \n 4. Andra lagersaldot for varor \n 5. Sortera varor \n 6. Avregistrera varor \n 7. Avsluta programmet\n");
+        printf("\nValj en meny val (1-7):\n ");
+        printf("\n 1. Registrera nya varor \n 2. Skriva ut alla varor \n 3. Soka efter varor \n 4. Andra lagersaldot f?r varor \n 5. Sortera varor \n 6. Avregistrera varor \n 7. Avsluta programmet\n");
         scanf("%d", &menuChoice);
 
         switch(menuChoice)
@@ -64,7 +64,7 @@ int main()
                 nrOfProducts = deleteProduct(registry, nrOfProducts);
                 break;
             case 7:
-                printf("Filen sparades\n");
+                printf("File saved\n");
                 readToFile(registry, fileName, &nrOfProducts);
                 printf(">>Bye");
 
@@ -79,7 +79,6 @@ void readFromFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
 {
     FILE *fp;
     fp = fopen(fileName,"r");
-
     if(fp!= NULL)
     {
         char productName[WORDLENGTH];
@@ -131,7 +130,7 @@ void registerProduct(Warehouse registry[], int *pNrOfProducts)
     int productNumber, productAmount, unique;
     char productName[WORDLENGTH];
 
-    do
+    while (productNumber != 0) //&& *pNrOfProducts < MAX)
     {
         unique = 0;
         if(*pNrOfProducts >= MAX)
@@ -168,15 +167,16 @@ void registerProduct(Warehouse registry[], int *pNrOfProducts)
             registry[*pNrOfProducts] = createProduct(productName, productNumber, productAmount);
             (*pNrOfProducts)++;
         }
-    } while (productNumber != 0);
+    }
 }
-
         
 
 
 
 void printProducts(Warehouse p)
 {
+    //printf("Varunummer  Namn                Lagersaldo\n");
+    //printf("------------------------------------------\n");
     printf("%03d\t    %-20s%d\n", p.productNumber, p.productName, p.productAmount);
 } 
 
@@ -184,7 +184,7 @@ void printRegistery(Warehouse registry[], int nrOfProducts)
 {
     if(nrOfProducts == 0)
     {
-        printf("Det finns inga varor registerade.\n ");
+        printf("Det finns inga varor registerade. ");
     }
     else
     {
@@ -225,14 +225,12 @@ void searchMenu(Warehouse registry[], int nrOfProducts)
 void searchProductNumber(Warehouse registry[], int nrOfProducts)
 {   
     int userProductNumber, digit_NotFound;
-    digit_NotFound = 0;
 
     while(nrOfProducts <= MAX)
     {
-        
+        digit_NotFound = 0;
         printf("Ange varunummer (0 for avslut): ");
         scanf("%d", &userProductNumber);
-        digit_NotFound = 0;
         if(userProductNumber == 0)
         {
             break;
@@ -244,12 +242,15 @@ void searchProductNumber(Warehouse registry[], int nrOfProducts)
             {
             printf("Varunummer  Namn                Lagersaldo\n");
             printf("------------------------------------------\n");
-            printProducts(registry[i]);
+            printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
             printf("\n");
-            digit_NotFound = 1;
+            }
+            else
+            {
+                digit_NotFound++;
             }
         }
-        if(digit_NotFound == 0)
+        if(digit_NotFound == nrOfProducts)
         {
             printf("Kunde inte hitta produkten, forsok igen\n");
         }
@@ -270,16 +271,15 @@ void searchProductAmount(Warehouse registry[], int nrOfProducts)
         {
             break;
         }
-        
-        printf("Varunummer  Namn                Lagersaldo\n");
-        printf("------------------------------------------\n");
 
         for(int i=0; i != nrOfProducts; i++)
         {
             if(userProductAmount == registry[i].productAmount)
             {
-
+            printf("Varunummer  Namn                Lagersaldo\n");
+            printf("------------------------------------------\n");
             printProducts(registry[i]);
+            //printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
             }
             else
             {
@@ -298,6 +298,7 @@ void searchProductName(Warehouse registry[], int nrOfProducts)
     char userProductName[WORDLENGTH]; 
     char *nameSeen;
     while(strcmp(userProductName, "0") != 0)
+    //while(userProductName != '0')
     {
         printf("Ange produkt namn (0 for avslut): ");
         scanf("%s%*c", userProductName);
@@ -311,6 +312,7 @@ void searchProductName(Warehouse registry[], int nrOfProducts)
             if(nameSeen != 0)
             {
             printProducts(registry[i]);
+            //printf("%03d\t    %-20s%d\n", registry[i].productNumber, registry[i].productName, registry[i].productAmount);
             }
         }
     }
@@ -318,42 +320,45 @@ void searchProductName(Warehouse registry[], int nrOfProducts)
 
 void editProductAmount(Warehouse registry[], int nrOfProducts)
 {
-    int userProductNumber, productNotFound = 0, userProductAmount, check;
+    int userProductNumber, productNotFound = 0, userProductAmount;
     char search[WORDLENGTH];
 
-    printf("Vill du soka efter varorna forst? (ja eller nej): ");
+    printf("Vill du soka efter varorna? (ja eller nej): ");
     scanf("%s%*c", search);
     if(strcmp(search, "ja") == 0)
     {
         searchMenu(registry, nrOfProducts);
     }
+    //searchMenu(registry, nrOfProducts);
 
     do
     {   
-        check = 0;
         printf("Ange varanummer som du vill andra saldot for (0 f”r avslut): ");
         scanf("%d", &userProductNumber);
         for(int i = 0; i < nrOfProducts; i++)
         {
-            if(userProductNumber == registry[i].productNumber)
+            
+            if(userProductNumber != registry[i].productNumber)
+            {
+                productNotFound++;
+            }
+            else if(userProductNumber == registry[i].productNumber)
             {
                 printf("Ange andring av lagersaldot: ");
                 scanf("%d", &userProductAmount);
                 registry[i].productAmount = registry[i].productAmount + userProductAmount;
-                check = 1;
-
                 if (registry[i].productAmount < 0)
                 {
                     printf("Du kan inte ha negativt lagersaldo, darfor satts den till 0\n");
                     registry[i].productAmount = 0;
                 }
             }
-        }
-            if((check == 0) && (userProductNumber != 0))
+            if((productNotFound == nrOfProducts) && (userProductNumber != 0))
             {
                 printf("Varan hittades inte, forsok igen.\n");
                 productNotFound = 0;
             }     
+        }
     } while(userProductNumber != 0);
 
 }
@@ -397,6 +402,7 @@ void sortProductNumber(Warehouse registry[], int nrOfProducts)
                 temp = registry[j];
                 registry[j] = registry[j+1];
                 registry[j+1] = temp;
+                
             }
         }   
     }
@@ -442,7 +448,7 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
     int i;
     char search[WORDLENGTH];
 
-    printf("Vill du soka efter varorna forst? (ja eller nej): ");
+    printf("Vill du soka efter varorna? (ja eller nej): ");
     scanf("%s%*c", search);
     if(strcmp(search, "ja") == 0)
     {
@@ -465,7 +471,7 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
                 nrOfProducts--;
             }
         }
-        printf("\nNy lagerstatus :\n");
+        printf("\n Nya lager status :\n");
         printRegistery(registry, nrOfProducts);
     } while(deleteInput != 0);
 
