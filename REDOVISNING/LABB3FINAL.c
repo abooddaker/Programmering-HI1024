@@ -84,6 +84,7 @@ void readFromFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
     {
         char productName[WORDLENGTH];
         int productNumber, productAmount;
+
         while(fscanf(fp, "%s", productName) == 1)
         {
             fscanf(fp, "%d", &productNumber);
@@ -458,7 +459,7 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
         {
             if(deleteInput == registry[i].productNumber)
             {
-                for(int j = i; j < nrOfProducts; j++)
+                for(int j = i; j < nrOfProducts-1; j++)
                 {
                     registry[j] = registry[j+1];
                 }
