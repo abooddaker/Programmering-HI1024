@@ -49,6 +49,7 @@ int main()
                 registerProduct(registry, &nrOfProducts);
                 break;
             case 2:
+                printf("test\n");
                 printRegistery(registry, nrOfProducts);
                 break;
             case 3:
@@ -65,14 +66,15 @@ int main()
                 break;
             case 7:
                 printf("Filen sparades\n");
-                readToFile(registry, fileName, &nrOfProducts);
                 printf(">>Bye");
-
                 break;
             default:
                 printf("Tillgangliga alternativ (1-7)!\n");
         }
     }while (menuChoice != 7);
+
+readToFile(registry, fileName, &nrOfProducts);
+
 }
 
 void readFromFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
@@ -171,9 +173,6 @@ void registerProduct(Warehouse registry[], int *pNrOfProducts)
         }
     } while (productNumber != 0);
 }
-
-        
-
 
 
 void printProducts(Warehouse p)
@@ -459,7 +458,7 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
         {
             if(deleteInput == registry[i].productNumber)
             {
-                for(int j = i; j < nrOfProducts-1; j++)
+                for(int j = i; j < nrOfProducts - 1; j++)
                 {
                     registry[j] = registry[j+1];
                 }
