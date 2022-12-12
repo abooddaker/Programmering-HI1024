@@ -15,11 +15,11 @@ void printCity(Cities c)
 
 }
 
-void swapPopulation(float *c1, float *c2)
+Cities swapPopulation(Cities *pC1, Cities *pC2)
 {
-    float temp = *c1;
-    *c1 = *c2;
-    *c2 = temp;
+    float temp = pC1 -> population;
+    pC1 -> population = pC2 -> population;
+    pC2 -> population = temp;
 }
 
 int main()
@@ -30,9 +30,10 @@ int main()
     printCity(c1);
     printCity(c2);
 
-    swapPopulation(&c1.population, &c2.population);
-
-    printf(">>Swapping \n");
+    swapPopulation(&c1, &c2);
+    printf("\n");
+    printf(">>Swapping population between Stockholm and Goteborg\n");
+    printf("\n");
 
     printCity(c1);
     printCity(c2);

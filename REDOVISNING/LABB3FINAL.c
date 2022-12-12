@@ -49,7 +49,6 @@ int main()
                 registerProduct(registry, &nrOfProducts);
                 break;
             case 2:
-                printf("test\n");
                 printRegistery(registry, nrOfProducts);
                 break;
             case 3:
