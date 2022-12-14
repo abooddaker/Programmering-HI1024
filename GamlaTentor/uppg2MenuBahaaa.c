@@ -18,7 +18,7 @@ int main(){
         scanf(" %c", &menu);
         switch(menu){
             case 'a':
-                nrOfWords = EnterWords(words,nrOfWords);
+              nrOfWords = EnterWords(words,nrOfWords);
                 break;
             case 'b':
                 view(words,nrOfWords);
@@ -29,8 +29,8 @@ int main(){
             case 'd':
              printf("avsluta");
                 break;
-           default:printf("Felaktigt val\n");
-            break;
+            default:printf("Felaktigt val\n");
+                break;
         }
     }
     while(menu != 'd');
@@ -50,7 +50,7 @@ int EnterWords(char words[][WORDSIZE],int nrOfWords){
                nrOfWords++;
             }
     }
-    return nrOfWords; 
+        return nrOfWords; 
 }
 
 void view(char words[][WORDSIZE],int nrOfWords){

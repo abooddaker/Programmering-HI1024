@@ -65,15 +65,14 @@ int main()
                 break;
             case 7:
                 printf("Filen sparades\n");
+                readToFile(registry, fileName, &nrOfProducts);
                 printf(">>Bye");
+
                 break;
             default:
                 printf("Tillgangliga alternativ (1-7)!\n");
         }
     }while (menuChoice != 7);
-
-readToFile(registry, fileName, &nrOfProducts);
-
 }
 
 void readFromFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
@@ -85,7 +84,6 @@ void readFromFile(Warehouse registry[], char fileName[], int *pNrOfProducts)
     {
         char productName[WORDLENGTH];
         int productNumber, productAmount;
-
         while(fscanf(fp, "%s", productName) == 1)
         {
             fscanf(fp, "%d", &productNumber);
@@ -173,6 +171,9 @@ void registerProduct(Warehouse registry[], int *pNrOfProducts)
     } while (productNumber != 0);
 }
 
+        
+
+
 
 void printProducts(Warehouse p)
 {
@@ -219,7 +220,6 @@ void searchMenu(Warehouse registry[], int nrOfProducts)
         }
     }
 }
-
 
 void searchProductNumber(Warehouse registry[], int nrOfProducts)
 {   
@@ -457,7 +457,7 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
         {
             if(deleteInput == registry[i].productNumber)
             {
-                for(int j = i; j < nrOfProducts - 1; j++)
+                for(int j = i; j < nrOfProducts; j++)
                 {
                     registry[j] = registry[j+1];
                 }
@@ -467,7 +467,6 @@ int deleteProduct(Warehouse registry[], int nrOfProducts)
         printf("\nNy lagerstatus :\n");
         printRegistery(registry, nrOfProducts);
     } while(deleteInput != 0);
-
 
     return nrOfProducts;
 }
