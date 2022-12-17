@@ -90,6 +90,7 @@ int fitBox(Box b1, Box b2)
              (b1.height > b2.height && b1.depth > b2.width && b1.width > b2.depth) ||
              (b1.height > b2.depth && b1.depth > b2.height && b1.width > b2.width)) {
         return 1;
-    } else
+    } 
+    else
     return 0;
 }
