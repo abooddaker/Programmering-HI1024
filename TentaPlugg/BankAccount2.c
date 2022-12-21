@@ -24,7 +24,7 @@ int main(void)
     printAccount(account2);
 
     Bank accounts[2] = {account1, account2};
-    int nrOfAccs = 2;e
+    int nrOfAccs = 2;
     printf("\n");
 
     printAll(accounts, nrOfAccs);

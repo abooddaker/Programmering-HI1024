@@ -15,8 +15,9 @@ void printAllAccounts(Bank account[], int totalAcc);
 
 int main(void)
 {
-    Bank account1 = {"Shevek", 123, 230};
-    Bank account2 = createAccount("Ketho", 124, 300);
+    Bank account1 = {"Shevek", 123, 230}; 
+    Bank account2;
+    account2 = createAccount("Ketho", 124, 300);
     Bank account3 = createAccount("Ray", 125, 350);
     Bank account4 = createAccount("Me", 126, 500);
     Bank account5 = createAccount("Me", 126, 500);
@@ -30,7 +31,7 @@ int main(void)
     printAccount(account1);
     printAccount(account2);
 
-    Bank accounts[5] = {account1, account2, account3, account4, account4};
+    Bank accounts[5] = {account1, account2, account3, account4, account5};
     int totalAcc = 5;
 
     printf("-----------\n");

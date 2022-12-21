@@ -14,8 +14,6 @@ int checkMax(int box1, int box2);
 int total(int a, int b);
 int fitBox(Box b1, Box b2);
 
-
-
 int main(void){
 
     Box myBox1 = {"Gul", 7, 10, 12};
@@ -30,6 +28,8 @@ int main(void){
     printBox(createBoxforBoxes(myBox1,myBox2));
     fitBox(myBox1,myBox2);
     printf("%d", fitBox(myBox1,myBox2));
+
+    return 0;
 
 }
 
@@ -58,7 +58,8 @@ int checkMax(int a, int b)
     if (a > b)
     {
         return a;
-    } else 
+    } 
+    else 
     {
         return b;
     }
@@ -71,8 +72,6 @@ int total(int a, int b)
 
     return total;
 }
-
-
 
 int fitBox(Box b1, Box b2)
 {

@@ -31,7 +31,7 @@ int main(void)
         {
             length_in_meter = user_length * FOT_IN_METER;
         }
-        
+        else
         {
             printf("Ogiltig input");
         }
