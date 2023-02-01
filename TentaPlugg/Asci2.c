@@ -4,7 +4,7 @@ int main(void)
 {
     int ascii_code, menu_choice;
     char ascii_char, check_stop;
-
+    
     do
     {
         printf("Vill du ange ett tecken (1) eller en kod (2): ");

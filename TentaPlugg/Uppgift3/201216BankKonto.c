@@ -12,7 +12,6 @@ void printAccount(Bank b);
 void transfer(Bank *acc1, Bank *acc2);
 void printAllAccounts(Bank account[], int totalAcc);
 
-
 int main(void)
 {
     Bank account1 = {"Shevek", 123, 230}; 
@@ -25,9 +24,7 @@ int main(void)
 
     printAccount(account1);
     printAccount(account2);
-
     transfer(&account1, &account2);
-
     printAccount(account1);
     printAccount(account2);
 

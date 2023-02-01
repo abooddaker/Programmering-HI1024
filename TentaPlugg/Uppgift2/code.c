@@ -36,9 +36,7 @@ void generate_code(char code[CODE_LENGTH]) {
         code[i] = 'g';
         break;
     }
-    printf("%c", code[i]);
   }
-  printf("\n");
   
 }
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main(){
+int main()
+{
     float data = 1, sum = 0, maxData = 0;
     while(data > 0){
         printf("Ange matdata: ");
@@ -17,6 +18,5 @@ int main(){
     }else{
         printf("Matdata saknas\n");
     }
-    printf("Test");
     return 0;
 }

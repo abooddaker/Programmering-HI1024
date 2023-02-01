@@ -13,16 +13,12 @@ int main(void)
         }
     }
 
-
-
-
     for(row = 0; row < base; row++)
     {
         for(column = 0; column < base - row; column++)
         {
             printf("*");
         }
-        base--;
         printf("\n");
     }
 }

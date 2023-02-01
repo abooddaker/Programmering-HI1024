@@ -28,7 +28,7 @@ int main(void)
     {
         sum += array[i];
     }
-
+    
     if(sum==0)
     {
         printf("Matdata saknas");

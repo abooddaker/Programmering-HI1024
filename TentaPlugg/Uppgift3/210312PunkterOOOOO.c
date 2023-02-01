@@ -20,13 +20,10 @@ int main(void)
 {
     
     srand(time(0));
-
-
     Points allPoints[MAX];
     fillAllPoints(allPoints, MAX);
-
+    
     Points largestXPoint = maxPoint(allPoints, MAX);
-
     printAllPoints(allPoints, MAX);
     printLargestPoint(largestXPoint);
 }

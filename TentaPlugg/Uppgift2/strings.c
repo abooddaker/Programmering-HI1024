@@ -43,4 +43,5 @@ int main() {
     printf("%s\n", s3);
     printf("Amount of spaces in the 3rd string:  %d", count);
     return 0;
+
 }
