@@ -6,7 +6,7 @@ int main(void)
 {
     int menuChoice, nrOfWords;
     char registry[MAX][MAX];
-
+    int character; 
     do
     {
         printf("(1) Skriva in (2) Skriva ut (3) Radera (4) Avsluta");
@@ -14,9 +14,9 @@ int main(void)
 
         switch(menuChoice)
         {
-            case 1: //skriva in
+            case 1:
             break;
-            case 2: //skriva ut
+            case 2: 
             break;
             case 3: //radera
             break;
