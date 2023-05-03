@@ -7,6 +7,7 @@ int main(void)
     int menuChoice, nrOfWords;
     char registry[MAX][MAX];
     int character; 
+    
     do
     {
         printf("(1) Skriva in (2) Skriva ut (3) Radera (4) Avsluta");

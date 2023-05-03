@@ -38,4 +38,5 @@ void printBox(Box b)
     else
     {
         printf("sturdy\n");
+    }
 }

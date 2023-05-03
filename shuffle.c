@@ -24,8 +24,6 @@ int main()
         printf("%d, ", cards[j]);
     }
     return 0;
-
-
 }
 
 void shuffle(int cards[], int size)
