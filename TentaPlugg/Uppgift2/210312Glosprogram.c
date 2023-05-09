@@ -11,15 +11,16 @@ int main(void)
     do
     {
         printf("(1) Skriva in (2) Skriva ut (3) Radera (4) Avsluta");
+        printf("V„lj: value\n");
         scanf("%d", &menuChoice);
 
         switch(menuChoice)
         {
-            case 1:
+            case 1: // test
             break;
             case 2: 
             break;
-            case 3: //radera
+            case 3: 
             break;
 
         }
