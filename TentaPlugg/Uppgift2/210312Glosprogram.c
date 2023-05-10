@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #define MAX 20
+#define MAXLETTERS 30
 
 int main(void)
 {
