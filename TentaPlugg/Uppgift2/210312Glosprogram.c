@@ -7,11 +7,12 @@ int main(void)
 {
     int menuChoice, nrOfWords;
     char registry[MAX][MAX];
-    int character; 
+    int character;
+    int newOption; 
     
     do
     {
-        printf("(1) Skriva in (2) Skriva ut (3) Radera (4) Avsluta");
+        printf("(1) Skriva in (2) Skriva ut (3) Radera (4) Avsluta"); // add a new option
         printf("V„lj: value\n");
         scanf("%d", &menuChoice);
 
@@ -33,7 +34,7 @@ void registerWords(char registry[][MAX], int *pNrOfWords)
     char swedish[MAX], english[MAX];
     if((*pNrOfWords) == MAX)
     {
-        printf("Gloslistan „r fullt.");
+        printf("Gloslistan „r fullt");
         return;
     }
     for(int i = 0; i < *pNrOfWords; i++)
