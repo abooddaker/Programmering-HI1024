@@ -8,7 +8,8 @@ int main(void)
     int menuChoice, nrOfWords;
     char registry[MAX][MAX];
     int character;
-    int newOption; 
+    int newOption;
+    int *pNrOfWords = &nrOfWords; 
     
     do
     {
