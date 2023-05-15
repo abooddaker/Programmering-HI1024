@@ -15,6 +15,7 @@ int main(void)
             printf("Ange tecken: ");
             scanf(" %c", &ascii_char);
             printf("Koden motsvaras av tecknet: %d\n", ascii_char);
+            printf("Tecknet motsvaras av koden: %c\n", ascii_char);
         }
         else
         {
