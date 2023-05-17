@@ -16,6 +16,7 @@ int main(void)
             scanf(" %c", &ascii_char);
             printf("Koden motsvaras av tecknet: %d\n", ascii_char);
             printf("Tecknet motsvaras av koden: %c\n", ascii_char);
+            printf("Tecknet motsvaras av koden: %d\n", ascii_char);
         }
         else
         {
@@ -29,6 +30,7 @@ int main(void)
             else
             {
                 printf("Tecknet motsvaras av koden: %c\n", ascii_code);
+                printf("Tecknet motsvaras av koden: %d\n", ascii_code);
             }
         }
             printf("Vill du avsluta? (j/n): ");
