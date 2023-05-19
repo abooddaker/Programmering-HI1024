@@ -26,6 +26,7 @@ int main(void)
             if(ascii_code < 0 || ascii_code > 127)
             {
                 printf("Du angav inte en ascii-kod.\n");
+                printf("Tecknet motsvaras av koden: %c\n", ascii_code);
             } 
             else
             {
