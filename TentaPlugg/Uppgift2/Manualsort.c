@@ -160,3 +160,10 @@ void swap(char letterArray[], int i, int j)
     letterArray[i] = letterArray[j];
     letterArray[j] = tmp;
 }
+
+void swap(char letterArray[], int i, int j)
+{
+    char tmp = letterArray[i];
+    letterArray[i] = letterArray[j];
+    letterArray[j] = tmp;
+}
