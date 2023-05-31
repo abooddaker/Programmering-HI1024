@@ -167,3 +167,12 @@ void swap(char letterArray[], int i, int j)
     letterArray[i] = letterArray[j];
     letterArray[j] = tmp;
 }
+
+void printIndexArray(int indexArray[], int nrOfLetters)
+{
+    for(int i = 0; i < nrOfLetters; i++)
+    {
+        printf("%d ", indexArray[i]);
+    }
+    printf("\n");
+}
