@@ -35,3 +35,16 @@ Box changeCharacter(Box b)
     }
     return b;
 }
+
+Box changeCharacter(Box b)
+{
+    if(strcmp(b.type,"fragile")== 0)
+    {
+        strcpy(b.type, "sturdy");
+    } 
+    else
+    {
+        strcpy(b.type, "fragile");
+    }
+    return b;
+}
