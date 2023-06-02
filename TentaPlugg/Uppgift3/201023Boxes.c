@@ -63,6 +63,15 @@ int checkMax(int a, int b)
     {
         return b;
     }
+    
+    if (b > a)
+    {
+        return a;
+    } 
+    else 
+    {
+        return b;
+    }
 }
 
 int total(int a, int b)
