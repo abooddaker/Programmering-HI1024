@@ -11,6 +11,7 @@ int main(void)
     {
         printf("Hur m†nga bokstaver vill du sortera? (2-20)? ");
         printf("Hur m†nga bokstaver vill du sortera? (2-20)? ");
+        printf("Hur m†nga bokstaver vill du sortera? (2-20)? ");
         scanf("%d", &nrOfLetters);
 
     } while (nrOfLetters < 2 || nrOfLetters > 20);
