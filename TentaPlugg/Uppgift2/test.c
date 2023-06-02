@@ -64,6 +64,7 @@ int write_eng(char str[][MAX_LENGTH+1], int n)
 {
     printf("Engelska: ");
     printf("Svenska: ");
+    printf("Svenska: ");
     scanf("%s", str[n]);
     return 0;
 }
